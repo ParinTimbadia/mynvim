@@ -13,20 +13,19 @@ local plugins = {
     {
     "stevearc/conform.nvim",
     lazy = true,
-    -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
     },
     { "nvim-lua/plenary.nvim",  -- plenary 
     lazy = false
     },
-    -- {
-    --     "nvim-treesitter/nvim-treesitter",
-    --     opts = {
-    --         ensure_installed = {
-    --             "vim", "lua", "vimdoc",
-    --         },
-    --     },
-    -- },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        opts = {
+            ensure_installed = {
+                "vim", "lua", "vimdoc", "c", "cpp", "python", "javascript", "html", "css",
+            },
+        },
+    },
     {
         "jinh0/eyeliner.nvim",
         lazy = false,
