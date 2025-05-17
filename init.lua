@@ -37,21 +37,21 @@ local plugins = {
             }
         end,
     },
-     {
-     'nvim-orgmode/orgmode',
-     event = 'VeryLazy',
-     ft = { 'org' },
-     config = function()
-     -- Setup orgmode
-     require('orgmode').setup({
-       org_agenda_files = '~/projects/orgfiles/*',
-       org_default_notes_file = '~/projects/orgfiles/ssd.org',
-       org_deadline_warning_days = 0,
-       org_startup_indented = true,
-       -- win_split_mode = 'float'
-     })
-    end,
-    },
+    --  {
+    --  'nvim-orgmode/orgmode',
+    --  event = 'VeryLazy',
+    --  ft = { 'org' },
+    --  config = function()
+    --  -- Setup orgmode
+    --  require('orgmode').setup({
+    --    org_agenda_files = '~/projects/orgfiles/*',
+    --    org_default_notes_file = '~/projects/orgfiles/ssd.org',
+    --    org_deadline_warning_days = 0,
+    --    org_startup_indented = true,
+    --    -- win_split_mode = 'float'
+    --  })
+    -- end,
+    -- },
     {
     'stevearc/oil.nvim',
     ---@module 'oil'
@@ -63,25 +63,36 @@ local plugins = {
         require("oil").setup()
     end,
     },
-    {"neanias/everforest-nvim",
-    version = false,
-    lazy = true,
-    priority = 5000,
-    config = function()
-        require("everforest").setup({
-                background = "soft",
-                disable_italic_comments = true,
-                ui_contrast = "high",
-                ---@param highlight_groups Highlights
-                ---@param palette Palette
-                on_highlights = function(highlight_groups, palette)
-                highlight_groups.LineNr = {fg = palette.red}
-                highlight_groups.LineNrAbove = {fg = palette.green}
-                highlight_groups.LineNrBelow = {fg = palette.green}
-            end,
+    {
+        'f4z3r/gruvbox-material.nvim',
+        lazy = false,
+        priority = 5000, 
+        opts = {},
+        config = function()
+            require('gruvbox-material').setup({
+                contrast = 'hard',
             })
-        end,
+	end
     },
+    -- {"neanias/everforest-nvim",
+    -- version = false,
+    -- lazy = true,
+    -- priority = 5000,
+    -- config = function()
+    --     require("everforest").setup({
+    --             background = "soft",
+    --             disable_italic_comments = true,
+    --             ui_contrast = "high",
+    --             ---@param highlight_groups Highlights
+    --             ---@param palette Palette
+    --             on_highlights = function(highlight_groups, palette)
+    --             highlight_groups.LineNr = {fg = palette.red}
+    --             highlight_groups.LineNrAbove = {fg = palette.green}
+    --             highlight_groups.LineNrBelow = {fg = palette.green}
+    --         end,
+    --         })
+    --     end,
+    -- },
     {
         'nvim-lualine/lualine.nvim',
         lazy = false,
@@ -90,7 +101,7 @@ local plugins = {
             require('lualine').setup({
                 options = {
                     showtabline = 2,
-                    theme = "everforest",
+                    theme = require("gruvbox-material.lualine").theme("medium"),
                     component_separators = {left = "|", right = "|"},
                     section_separators = {left = "", right = ""},
 
@@ -166,12 +177,10 @@ vim.keymap.set('n', '<leader>x', '<cmd>bdelete<CR>', opts)
 require("lazy").setup(plugins, lazy_config)
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
-vim.api.nvim_set_hl(0, '@org.agenda.deadline', {fg = '#FF0000'})
-vim.api.nvim_set_hl(0, '@org.agenda.scheduled', {link = 'Identifier'})
 -- dofile(vim.g.base46_cache .. "defaults")
 -- dofile(vim.g.base46_cache .. "statusline")
 -- dofile(vim.g.base46_cache .. "syntax")
 -- dofile(vim.g.base46_cache .. "treesitter")
 -- dofile(vim.g.base46_cache .. "git")
 -- dofile(vim.g.base46_cache .. "nvimtree")
-require("everforest").load()
+-- require("everforest").load()
