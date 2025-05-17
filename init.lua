@@ -37,21 +37,21 @@ local plugins = {
             }
         end,
     },
-     {
-     'nvim-orgmode/orgmode',
-     event = 'VeryLazy',
-     ft = { 'org' },
-     config = function()
-     -- Setup orgmode
-     require('orgmode').setup({
-       org_agenda_files = '~/projects/orgfiles/*',
-       org_default_notes_file = '~/projects/orgfiles/ssd.org',
-       org_deadline_warning_days = 0,
-       org_startup_indented = true,
-       -- win_split_mode = 'float'
-     })
-    end,
-    },
+    --  {
+    --  'nvim-orgmode/orgmode',
+    --  event = 'VeryLazy',
+    --  ft = { 'org' },
+    --  config = function()
+    --  -- Setup orgmode
+    --  require('orgmode').setup({
+    --    org_agenda_files = '~/projects/orgfiles/*',
+    --    org_default_notes_file = '~/projects/orgfiles/ssd.org',
+    --    org_deadline_warning_days = 0,
+    --    org_startup_indented = true,
+    --    -- win_split_mode = 'float'
+    --  })
+    -- end,
+    -- },
     {
     'stevearc/oil.nvim',
     ---@module 'oil'
